@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Practices</h1>
-</body>
-</html>
+@extends('template')
+
+@section('title', 'Practices | Depayser')
+
+@section('content')
+<h1>Listado</h1>
+
+@foreach ($practices as $practice)
+    <p>
+        <strong>{{ $practice['id'] }}</strong>
+        <a href="{{ route('practice', $practice['id']) }}">
+            {{ $practice['title'] }}
+        </a>
+    </p>
+@endforeach
+@endsection

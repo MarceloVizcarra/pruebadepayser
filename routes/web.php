@@ -28,17 +28,18 @@ use Illuminate\Support\Facades\Route;
 // Ruta para la vista de home
 Route::get('/', function () {
     return view('home');
-});
+}) -> name('home');
 
 // Ruta para la vista de practicas
 Route::get('practices', function () {
     return view('practices');
-});
+}) -> name('practices');
 
 // Ruta para detalle de practica de practica
 Route::get('practices/{id}', function ($id) {
-    return view('practice', ['id' => $id]);
-});
+    $practice = $id;
+    return view('practice', ['practice' => $practice]);
+}) -> name('practice');
 
 
 // Ruta para la vista de about
