@@ -19,6 +19,18 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'surname' => fake()->lastName(),
+            'username' => fake()->unique()->userName(),
+            'phone' => fake()->phoneNumber(),
+            'image' => fake()->imageUrl(640, 480, 'technics', true),
+            'status' => fake()->randomElement(['Active', 'Inactive']),
+            'description' => fake()->paragraph(),
+            'linkedin' => fake()->url(),
+            'github' => fake()->url(),
+            'country' => fake()->country(),
+            'city' => fake()->city(),
+            'address' => fake()->address(),
+            'curriculum' => fake()->url(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
