@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Practices>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Employe>
  */
-class PracticesFactory extends Factory
+class EmployeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class PracticesFactory extends Factory
             'user_id' => $this->faker->numberBetween(1, 10),
             'title' => $title = $this->faker->sentence,
             'slug' => Str::slug($title),
-            'content' => $this->faker->paragraph,
+            'content' => $this->faker->text(500),
             'company' => $this->faker->company,
             'location' => $this->faker->city,
             'type' => $this->faker->randomElement(['Full-time', 'Part-time']),
@@ -30,7 +30,6 @@ class PracticesFactory extends Factory
             'category' => $this->faker->randomElement(['Frontend', 'Backend', 'Fullstack']),
             'status' => $this->faker->randomElement(['Active', 'Inactive']),
             'image' => $this->faker->imageUrl(640, 480, 'technics', true),
-
         ];
     }
 }

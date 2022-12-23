@@ -9,7 +9,7 @@
 <body>
     <p>
         <a href="{{ route('home') }}">Home</a>
-        <a href="{{ route('practices') }}">Practicas</a>
+        <a href="{{ route('advert') }}">Anuncios</a>
     </p>
     <br>
 

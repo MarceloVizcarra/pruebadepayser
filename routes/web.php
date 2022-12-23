@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,21 +26,38 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Ruta para la vista de home
-Route::get('/', function () {
-    return view('home');
-}) -> name('home');
+Route::controller(PageController::class) -> group(function () {
+    // Ruta pra la vista de home
+    Route::get('/', 'home') -> name('home');
 
-// Ruta para la vista de practicas
-Route::get('practices', function () {
-    return view('practices');
-}) -> name('practices');
+    // ruta para la vista de anuncions
+    Route::get('advert', 'advert') -> name('advert');
 
-// Ruta para detalle de practica de practica
-Route::get('practices/{id}', function ($id) {
-    $practice = $id;
-    return view('practice', ['practice' => $practice]);
-}) -> name('practice');
+    // ruta para la vista de detalle de trabajo
+    Route::get('advert/{employe:slug}', 'employe') -> name('employe');
+
+    // Ruta para la vista de acerca de nosotros
+    Route::get('about', 'about') -> name('about');
+
+    // Ruta para la vista de nuestro contacto
+    Route::get('contact', 'contact') -> name('contact');
+});
+
+// // Ruta para la vista de home
+// Route::get('/', function () {
+//     return view('home');
+// }) -> name('home');
+
+// // Ruta para la vista de practicas
+// Route::get('practices', function () {
+//     return view('practices');
+// }) -> name('practices');
+
+// // Ruta para detalle de practica de practica
+// Route::get('practices/{id}', function ($id) {
+//     $practice = $id;
+//     return view('practice', ['practice' => $practice]);
+// }) -> name('practice');
 
 
 // Ruta para la vista de about
