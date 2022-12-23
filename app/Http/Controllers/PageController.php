@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-        $employes = Employe::latest()->take(5)->get();
+        $search = $request->search;
+        $employes = Employe::where('title', 'LIKE', "%{$search}%")->latest()->take(5)->get();
         return view('home', ['employes' => $employes]);
     }
 
