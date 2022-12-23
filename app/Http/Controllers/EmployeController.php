@@ -16,6 +16,8 @@ class EmployeController extends Controller
         return view('employes.index', ['employes' => Employe::where("user_id","=", Auth::user()->id)->paginate(2)]);
     }
 
+    
+
     public function destroy (Employe $employe)
     {
         $employe->delete();

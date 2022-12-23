@@ -22,7 +22,12 @@
                                 <a href="" class="text-indigo-600">Editar</a>
                             </td>
                             <td class="px-6 px-4">
-                                Eliminar
+                                <form action="{{ route('employes.destroy', $employe) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <input type="submit" value="Eliminar" class="bg-red-600 text-white rounded px-4 py-2" onclick="return confirm('Desea eliminar?')">
+                                </form>
                             </td>
                         </tr>
                     @endforeach
