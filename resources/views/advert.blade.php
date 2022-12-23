@@ -10,9 +10,8 @@
     <p>
         {{ $employe->content }}
     </p>
-    <br>
     <span> {{ $employe->user->name }}</span>
-    <a href="{{ route('employe', $employe->slug) }}">Ver</a>
+    <a href="{{ route('employe', $employe->slug) }}">Ver</a><br><br>
 @endforeach
 
 {{ $employes->links() }}

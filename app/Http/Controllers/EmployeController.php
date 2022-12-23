@@ -49,6 +49,8 @@ class EmployeController extends Controller
         $employe->image = $request->image;
         $employe->user_id = Auth::user()->id;
         $employe->save();
+        $employe->slug = Str::slug($request->title).'-'.$employe->id;
+        $employe->save();
 
         return redirect()->route('employes.index');
     }
@@ -57,6 +59,8 @@ class EmployeController extends Controller
     {
         return view('employes.edit', ['employe' => $employe]);
     }
+
+    
 
     public function update(Request $request, Employe $employe)
     {
@@ -73,7 +77,7 @@ class EmployeController extends Controller
         ]);
 
         $employe->title = $request->title;
-        $employe->slug = Str::slug($request->title);
+        $employe->slug = Str::slug($request->title).'-'.$employe->id;
         $employe->content = $request->content;
         $employe->company = $request->company;
         $employe->location = $request->location;
