@@ -3,8 +3,11 @@
 @section('title', 'Home | Depayser')
 
 @section('content')
-<div>
-
+<div class="bg-gray-900 px-20 py-16 rounded-lg mb-8 relative overflow-hidden">
+    <span class="text-xs uppercase text-gray-700 bg-gray-400 rounded-full px-2 py-1">Nunca mas sufriras para encontrar una practica</span>
+    <h1 class="text-3xl text-white ml-4">Empleos destacados</h1>
+    <p class="text-sm text-gray-400 ml-2">Proyecto realizado por</p>
+    <img src="{{ asset('images/monkey.png') }}" alt="logo" class="absolute -right-20 -top-20 opacity-20">
 </div>
 
 <div class="px-4">
