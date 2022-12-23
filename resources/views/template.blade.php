@@ -10,6 +10,15 @@
     <p>
         <a href="{{ route('home') }}">Home</a>
         <a href="{{ route('advert') }}">Anuncios</a>
+
+        @auth
+            <a href="{{ route('logout') }}">Logout</a>
+            <a href="{{ route('profile.edit') }}">Profile</a>
+            <a href="{{ route('dashboard') }}">Dashboard</a>
+        @else
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+        @endauth
     </p>
     <br>
 

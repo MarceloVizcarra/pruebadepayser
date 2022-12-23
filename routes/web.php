@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-* Route::get        Consultar
-* Route::post       Crear
-* Route::put        Actualizar
-* Route::delete     Eliminar
-* Route::post       Guardar
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::controller(PageController::class) -> group(function () {
     // Ruta pra la vista de home
@@ -43,24 +33,15 @@ Route::controller(PageController::class) -> group(function () {
     Route::get('contact', 'contact') -> name('contact');
 });
 
-// // Ruta para la vista de home
-// Route::get('/', function () {
-//     return view('home');
-// }) -> name('home');
 
-// // Ruta para la vista de practicas
-// Route::get('practices', function () {
-//     return view('practices');
-// }) -> name('practices');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// // Ruta para detalle de practica de practica
-// Route::get('practices/{id}', function ($id) {
-//     $practice = $id;
-//     return view('practice', ['practice' => $practice]);
-// }) -> name('practice');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-
-// Ruta para la vista de about
-
-// Ruta para la vista de contact
-
+require __DIR__.'/auth.php';
