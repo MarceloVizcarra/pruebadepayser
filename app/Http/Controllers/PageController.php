@@ -9,7 +9,8 @@ class PageController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $employes = Employe::latest()->take(5)->get();
+        return view('home', ['employes' => $employes]);
     }
 
     public function advert()
