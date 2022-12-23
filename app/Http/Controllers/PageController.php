@@ -21,6 +21,7 @@ class PageController extends Controller
 
     public function employe(Employe $employe)
     {
+        dd($employe);
         return view('employe', ['employe' => $employe]);
     }
 }
