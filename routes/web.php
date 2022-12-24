@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,9 +37,7 @@ Route::controller(PageController::class) -> group(function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Controller::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -51,4 +50,4 @@ require __DIR__.'/auth.php';
 
 Route::resource('employes', EmployeController::class) -> middleware('auth') -> except(['show']) ;
 
-Route::resource('applies', ApplyController::class) -> middleware('auth') -> except(['show']) ;
+Route::resource('applies', ApplyController::class) -> middleware('auth') -> except(['index', 'edit', 'update']) ;

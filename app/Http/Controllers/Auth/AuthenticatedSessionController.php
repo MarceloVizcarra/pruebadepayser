@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return view('dashboard', ['applies' => Apply::where("user_id","=", Auth::user()->id)->paginate(5)]);
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
