@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ApplyController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +50,5 @@ require __DIR__.'/auth.php';
 
 
 Route::resource('employes', EmployeController::class) -> middleware('auth') -> except(['show']) ;
+
+Route::resource('applies', ApplyController::class) -> middleware('auth') -> except(['show']) ;
