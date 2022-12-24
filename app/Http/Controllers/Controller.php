@@ -16,6 +16,6 @@ class Controller extends BaseController
 
     public function show(Apply $apply)
     {
-        return view('dashboard', ['applies' => Apply::where("user_id","=", Auth::user()->id)->paginate(5)]);
+        return view('dashboard', ['applies' => Apply::where("user_id","=", Auth::user()->id)->latest()->paginate(5)]);
     }
 }

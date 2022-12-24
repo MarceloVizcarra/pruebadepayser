@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Apply;
 use App\Models\Employe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -21,9 +22,13 @@ class PageController extends Controller
         return view('advert', ['employes' => $employes]);
     }
 
-    public function employe(Employe $employe)
+    public function employe(Employe $employe, Apply $apply)
     {
         //dd($employe);
-        return view('employe', ['employe' => $employe]);
+        if (Auth::check()) {
+            return view('employe', ['employe' => $employe, 'apply' => Apply::where("user_id","=", Auth::user()->id)->get()]);
+        } else {
+            return view('employe', ['employe' => $employe]);
+        }
     }
 }
