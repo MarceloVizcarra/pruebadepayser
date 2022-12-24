@@ -14,4 +14,6 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('employes.index') }}" class="text-sm text-white bg-gray-800 rounded px-4 py-2">Empleos creados</a>
+    <a href="{{ route('profile.edit') }}" class="text-sm text-white bg-gray-800 rounded px-4 py-2">Editar mi perfil</a>
 </x-app-layout>

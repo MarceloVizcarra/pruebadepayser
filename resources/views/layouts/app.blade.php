@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class=" container px-4 mx-auto">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -30,6 +30,9 @@
             <main>
                 {{ $slot }}
             </main>
+            <p class="py-16">
+                <img src="{{ asset('images/monkey.png') }}" alt="logo" class="h-10 mx-auto">
+            </p>
         </div>
     </body>
 </html>
