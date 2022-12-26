@@ -1,18 +1,35 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Home') }}
-        </h2>
-    </x-slot>
-
 
     <div class="py-16">
         <h1 class="text-5xl mb-8">{{ $employe->title }}</h1>
         <p class="leading-loose text-lg text-gray-700">
             {{ $employe->content }}
         </p>
+        <div class="flex items-center gap-4 mt-8">
+            <p class="text-gray-700 text-sm">
+                <span class="font-bold">Empresa:</span> {{ $employe->company }}
+            </p>
+            <p class="text-gray-700 text-sm">
+                <span class="font-bold">Ubicación:</span> {{ $employe->location }}
+            </p>
+            <p class="text-gray-700 text-sm">
+                <span class="font-bold">Tipo:</span> {{ $employe->type }}
+            </p>
+            <p class="text-gray-700 text-sm">
+                <span class="font-bold">Salario:</span> {{ $employe->salary }}
+            </p>
+            <p class="text-gray-700 text-sm">
+                <span class="font-bold">Categoria:</span> {{ $employe->category }}
+            </p>
+            <p class="text-gray-700 text-sm">
+                <span class="font-bold">Fecha de publicación:</span> {{ $employe->created_at->format('d/m/Y') }}
+            </p>
+            <p class="text-gray-700 text-sm">
+                <span class="font-bold">Fecha de cierre:</span> {{ $employe->deadline }}
+            </p>
+        </div>
     </div>
-    <div class="font-semibold text-xl text-gray-800 leading-tight flex items-center justify-between ">
+    <div class="font-semibold text-xl text-gray-800 leading-tight flex items-center justify-center ">
         <a href="{{ route('advert') }}" class="text-indigo-600">Volver</a>
         @auth
         @if (in_array($employe->id, $apply->pluck('employe_id')->toArray()))
