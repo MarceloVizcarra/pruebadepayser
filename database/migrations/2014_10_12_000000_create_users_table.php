@@ -15,24 +15,24 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('surname');
-            $table->string('username')->unique();
-            $table->string('phone');
-            $table->string('image');
-            $table->string('status');
-            $table->string('description');
-            $table->string('linkedin');
-            $table->string('github');
-            $table->string('country');
-            $table->string('city');
-            $table->string('address');
-            $table->string('curriculum');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('name');                 // nombre
+            $table->string('surname');              // apellido
+            $table->string('username')->unique();   // nombre de usuario
+            $table->string('email')->unique();      // email
+            $table->string('image');                // imagen de perfil
+            $table->string('phone');                // telefono
+            $table->string('status');               // estado (activo, inactivo)
+            $table->string('description');          // descripcion
+            $table->string('linkedin');             // linkedin    
+            $table->string('github');               // github
+            $table->string('country');              // pais
+            $table->string('city');                 // ciudad
+            $table->string('address');              // direccion
+            $table->string('curriculum');           // curriculum
+            $table->timestamp('email_verified_at')->nullable(); // verificacion de email
+            $table->string('password');             // password
+            $table->rememberToken();                // token de recordar
+            $table->timestamps();                   // fecha de creacion y actualizacion
         });
     }
 

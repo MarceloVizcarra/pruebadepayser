@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('applies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('employe_id');
+            $table->unsignedBigInteger('user_id');      // id del usuario que postula
+            $table->unsignedBigInteger('employe_id');   // id de la oferta
+
+            // Vinculo entre la tabla applies y la tabla users
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('employe_id')->references('id')->on('employes')->onDelete('cascade');
             $table->timestamps();
