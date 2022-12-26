@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('email')->unique();      // email
             $table->string('image');                // imagen de perfil
             $table->string('phone');                // telefono
-            $table->string('status');               // estado (activo, inactivo)
             $table->string('description');          // descripcion
             $table->string('linkedin');             // linkedin    
             $table->string('github');               // github
@@ -43,6 +42,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users', function(Blueprint $table){
+            $table->dropColumn('status');
+        });
     }
 };
