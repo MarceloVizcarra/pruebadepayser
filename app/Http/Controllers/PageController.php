@@ -15,10 +15,12 @@ class PageController extends Controller
         return view('home', ['employes' => $employes]);
     }
 
-    public function advert()
+    public function advert(Request $request)
     {
         //$employes = Employe::get();
-        $employes = Employe::latest()->paginate(10);
+        $search = $request->search;
+        $filter = $request->filter;
+        $employes = Employe::where('title', 'LIKE', "%{$search}%")->where('category', 'LIKE', "%{$filter}%")->latest()->paginate(10);
         return view('advert', ['employes' => $employes]);
     }
 
