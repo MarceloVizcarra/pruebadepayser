@@ -6,9 +6,16 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Apply;
 
 class ProfileController extends Controller
 {
+
+    public function index(Apply $apply)
+    {
+        return view('profile.dashboard', ['applies' => Apply::where("user_id","=", Auth::user()->id)->latest()->paginate(5)]);
+    }
+
     /**
      * Display the user's profile form.
      *

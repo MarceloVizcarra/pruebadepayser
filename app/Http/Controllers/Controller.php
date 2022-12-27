@@ -14,8 +14,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function show(Apply $apply)
-    {
-        return view('dashboard', ['applies' => Apply::where("user_id","=", Auth::user()->id)->latest()->paginate(5)]);
-    }
+    // public function show(Apply $apply)
+    // {
+    //     return view('dashboard', ['applies' => Apply::where("user_id","=", Auth::user()->id)->latest()->paginate(5)]);
+    // }
 }
