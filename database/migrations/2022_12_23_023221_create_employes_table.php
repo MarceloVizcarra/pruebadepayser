@@ -21,12 +21,14 @@ return new class extends Migration
             $table->text('content');        // descripcion de la oferta
             $table->string('company');      // nombre de la empresa
             $table->string('image');        // logo de la empresa
-            $table->string('location');     // ciudad, pais
+            $table->string('country');      // pais
+            $table->string('city');         // ciudad
+            $table->string('location');     // localidad
             $table->string('type');         // tiempo completo, medio tiempo, contrato
             $table->string('salary');       // salario
             $table->string('category');     // categoria de la oferta (desarrollo, diseño, marketing, etc)
             $table->string('status');       // activo, inactivo
-            $table->string('deadline');     // plazo de postulacion
+            $table->timestamp('deadline');     // plazo de postulacion
             $table->boolean('published')->default(false); // publicado
             $table->timestamps();           // fecha de creacion y actualizacion
 
@@ -41,6 +43,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employes');
+        Schema::dropIfExists('employes', function(Blueprint $table){
+            $table->dropColumn('address');
+        });
     }
 };

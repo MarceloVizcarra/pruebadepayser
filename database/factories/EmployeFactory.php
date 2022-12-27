@@ -25,12 +25,14 @@ class EmployeFactory extends Factory
             'content' => $this->faker->text(500),
             'company' => $this->faker->company,
             'image' => $this->faker->imageUrl(640, 480, 'technics', true),
-            'location' => $this->faker->city,
+            'country' => $this->faker->country,
+            'city' => $this->faker->city,
+            'location' => $this->faker->address,
             'type' => $this->faker->randomElement(['Full-time', 'Part-time']),
             'salary' => $this->faker->randomElement(['$1000', '$2000', '$3000', '$4000', '$5000']),
             'category' => $this->faker->randomElement(['Frontend', 'Backend', 'Fullstack']),
             'status' => $this->faker->randomElement(['Active', 'Inactive']),
-            'deadline' => $this->faker->date(),
+            'deadline' => $this->faker->dateTimeBetween('now', '+1 years'),
         ];
     }
 }
