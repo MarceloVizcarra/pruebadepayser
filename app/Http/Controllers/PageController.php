@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Apply;
 use App\Models\Employe;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    public function home(Request $request)
+    public function home() // Metodo para la vista home
     {
-        $search = $request->search;
-        $employes = Employe::where('title', 'LIKE', "%{$search}%")->latest()->take(5)->get();
-        return view('home', ['employes' => $employes]);
+        $employes = Employe::latest()->take(5)->get();  // Obtiene los ultimos 5 empleos de la base de datos
+        return view('home', ['employes' => $employes]); // Devuelve la vista home con los empleos
     }
 
     public function advert(Request $request)
