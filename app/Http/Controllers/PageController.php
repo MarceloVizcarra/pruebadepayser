@@ -16,13 +16,12 @@ class PageController extends Controller
         return view('home', ['employes' => $employes]); // Devuelve la vista home con los empleos
     }
 
-    public function advert(Request $request)
+    public function advert(Request $request) // Metodo para la vista publicaciones
     {
-        //$employes = Employe::get();
-        $search = $request->search;
-        $filter = $request->filter;
+        $search = $request->search;  // Obtiene el valor del input search
+        $filter = $request->filter;  // Obtiene el valor del input filter
         $employes = Employe::where('title', 'LIKE', "%{$search}%")->where('category', 'LIKE', "%{$filter}%")->latest()->paginate(10);
-        return view('advert', ['employes' => $employes]);
+        return view('advert', ['employes' => $employes]); // Devuelve la vista publicaciones con los empleos filtrados
     }
 
     public function employe(Employe $employe, Apply $apply)

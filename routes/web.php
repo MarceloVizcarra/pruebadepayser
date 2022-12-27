@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Route;
 // ========= Rutas para el manejo de la parte publica de la pagina web
 Route::controller(PageController::class) -> group(function () {
     Route::get('/', 'home') -> name('home');                            // Ruta pra la vista de home
-    Route::get('advert', 'advert') -> name('advert');                   // ruta para la vista de anuncions
-    Route::get('advert/{employe:slug}', 'employe') -> name('employe');  // ruta para la vista de detalle de trabajo
-    Route::get('about', 'about') -> name('about');                      // Ruta para la vista de acerca de nosotros
-    Route::get('contact', 'contact') -> name('contact');                // Ruta para la vista de nuestro contacto
+    Route::get('/advert', 'advert') -> name('advert');                   // ruta para la vista de anuncions
+    Route::get('/advert/{employe:slug}', 'employe') -> name('employe');  // ruta para la vista de detalle de trabajo
+    Route::get('/about', 'about') -> name('about');                      // Ruta para la vista de acerca de nosotros
+    Route::get('/contact', 'contact') -> name('contact');                // Ruta para la vista de nuestro contacto
 });
 
 // ========= Rutas para el manejo de la parte privada de la pagina web
