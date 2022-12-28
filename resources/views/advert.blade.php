@@ -17,7 +17,7 @@
             <option value="Fullstack">Fullstack</option>
             <option value="Otros">Otros</option>
         </select>
-        <input type="submit" value="Buscar" class="bg-gray-800 text-white rounded px-4 py-2">
+        <input type="submit" value="Buscar" class="cursor-pointer bg-gray-800 text-white rounded px-4 py-2">
     </form>
 
     <div class="grid grid-cols-1 gap-2 mb-4">

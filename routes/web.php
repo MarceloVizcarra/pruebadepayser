@@ -34,5 +34,3 @@ Route::resource('employes', EmployeController::class) -> middleware('auth') -> e
 
 // Rutas para el manejo de las aplicaciones (postulaciones)
 Route::resource('applies', ApplyController::class) -> middleware('auth') -> except(['index', 'edit', 'update']) ;
-
-//Route::get('/dashboard', [Controller::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');

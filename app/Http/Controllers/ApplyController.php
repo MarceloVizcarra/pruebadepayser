@@ -23,6 +23,6 @@ class ApplyController extends Controller
         $apply->employe_id = $request->employe_id;
         $apply->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('profile.index');
     }
 }

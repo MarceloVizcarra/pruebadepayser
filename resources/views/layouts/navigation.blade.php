@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -24,18 +24,19 @@
                     @auth
                     @else
                     <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                        {{ __('Sign up') }}
+                        {{ __('Registrarse') }}
                     </x-nav-link>
                     <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                        {{ __('Sign in') }}
+                        {{ __('Iniciar sesion') }}
                     </x-nav-link>
                     @endauth
                 </div>
+
                 @auth
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->username }}</div>
+                            <div class="font-bold">{{ Auth::user()->username }}</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -46,12 +47,12 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.index')">
-                            {{ __('Dashboard') }}
+                        <x-dropdown-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
+                            {{ __('Mi perfil') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                        <x-dropdown-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                            {{ __('Editar perfil') }}
                         </x-dropdown-link>
 
 
@@ -62,7 +63,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Cerrar sesion') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -82,25 +83,41 @@
         </div>
     </div>
 
-    @auth
+ 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden border rounded rounded-lg">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('profile.index')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                {{ __('Home') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('advert')" :active="request()->routeIs('advert')">
+                {{ __('Publicaciones') }}
+            </x-responsive-nav-link>
+            @auth
+            @else
+            <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                {{ __('Registrarse') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                {{ __('Iniciar Sesion') }}
+            </x-responsive-nav-link>
+            @endauth
         </div>
 
+        @auth
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                <div class="text-base text-gray-800 font-bold">{{ Auth::user()->name }} <span class="font-medium text-gray-500">({{ Auth::user()->username }})</span></div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                <x-responsive-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
+                    {{ __('Mi perfil') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                    {{ __('Editar perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -110,16 +127,15 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar sesion') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
         </div>
+        @endauth    
     </div>
-    @else
-    @endauth
-</nav>
-<div class="opacity-60 h-px mb-8" style="
+
+    <div class="opacity-60 h-px mb-8" style="
             background: linear-gradient(to right,
             rgba(200, 200, 200, 0) 0%,
             rgba(200, 200, 200, 1) 30%,
@@ -127,4 +143,5 @@
             rgba(200, 200, 200, 0) 100%
             );
             ">
-</div>
+    </div>
+</nav>
