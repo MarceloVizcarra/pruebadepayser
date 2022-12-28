@@ -15,12 +15,11 @@ class ApplyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
             'employe_id' => 'required'
         ]);
 
         $apply = new Apply();
-        $apply->user_id = $request->user_id;
+        $apply->user_id = Auth::user()->id;
         $apply->employe_id = $request->employe_id;
         $apply->save();
 

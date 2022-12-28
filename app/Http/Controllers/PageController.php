@@ -24,13 +24,14 @@ class PageController extends Controller
         return view('advert', ['employes' => $employes]); // Devuelve la vista publicaciones con los empleos filtrados
     }
 
-    public function employe(Employe $employe, Apply $apply)
+    public function employe(Employe $employe) // Metodo para la vista detalle de empleo
     {
-        //dd($employe);
-        if (Auth::check()) {
-            return view('employe', ['employe' => $employe, 'apply' => Apply::where("user_id","=", Auth::user()->id)->get()]);
-        } else {
-            return view('employe', ['employe' => $employe]);
+        if (Auth::check()) { // Si el usuario esta autenticado
+            $apply = Apply::where("user_id","=", Auth::user()->id)->get()->pluck('employe_id')->toArray();
+        } else { // Si el usuario no esta autenticado
+            $apply = [];
         }
+
+        return view('employe', ['employe' => $employe, 'apply' => $apply]);
     }
 }
